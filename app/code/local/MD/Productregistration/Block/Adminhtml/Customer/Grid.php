@@ -34,12 +34,12 @@ class MD_Productregistration_Block_Adminhtml_Customer_Grid extends Mage_Adminhtm
 		  'width'     => '250px',
           'index'     => 'namecus',
       ));
-	  $this->addColumn('store_id', array(
-          'header'    => Mage::helper('productregistration')->__('Name'),
-          'align'     =>'center',
-		  'width'     => '250px',
-          'index'     => 'store_id',
-      ));
+//	  $this->addColumn('store_id', array(
+//          'header'    => Mage::helper('productregistration')->__('Name'),
+//          'align'     =>'center',
+//		  'width'     => '250px',
+//          'index'     => 'store_id',
+//      ));
 
 	  $this->addColumn('emailcus', array(
           'header'    => Mage::helper('productregistration')->__('Email'),

@@ -9,7 +9,7 @@ then you will see the tab menu Product Registration in admin panel.
 
 If after install extension, you get message "Access denied", please try to logout and login again.
 
-If you have any problem please email to: noreply@mage-designer.com
+If you have any problem please email to: support@mage-designer.com
 Thanks,
 Mage-designer.com
 

@@ -11,7 +11,7 @@
                 <use>standard</use>
                 <args>
                     <module>MD_Productregistration</module>
-                    <frontName>productregistration</frontName>
+						<frontName>productregistration</frontName>
                 </args>
             </productregistration>
         </routers>
@@ -38,7 +38,7 @@
 		<menu>
 			<productregistration module="productregistration">
 				<title>Product Registration</title>
-				<sort_order>71</sort_order>               
+				<sort_order>71</sort_order>
 				<children>
 					<customer module="productregistration">
 						<title>Customer Information</title>
@@ -48,7 +48,6 @@
 				</children>
 			</productregistration>
 		</menu>
-		
 		<acl>
 			<resources>
 				<all>
@@ -58,7 +57,14 @@
 					<children>
 						<productregistration module="productregistration">
 							<title>Product Registration</title>
-							<sort_order>71</sort_order>               
+							<sort_order>71</sort_order>
+							<children>
+								<customer module="productregistration">
+									<title>Customer Information</title>
+									<sort_order>1</sort_order>
+									<action>productregistration/adminhtml_customer</action>
+								</customer>
+							</children>
 						</productregistration>
 						<system>
                             <children>
