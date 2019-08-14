@@ -1,0 +1,80 @@
+<!--@subject {{var store.getFrontendName()}}: Product Register # {{htmlescape var=$data.invoice}} @-->
+<!--@vars
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+.fieldset {background: none repeat scroll 0 0 #FBFAF6;border: 1px solid #BBAFA0;margin: 28px 0;padding: 22px 25px 12px 33px;}
+.legend{color:#555;}
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#EAEAEA;font-size:13px;padding:10px;">
+	Hi {{htmlescape var=$data.namecus}}!
+</div>
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+    <td align="center" valign="top" style="padding:20px 0 20px 0">
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+            <!-- [ header starts here] -->
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img height = "47" src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+				<tr style="color: #555555; text-align: center;"> 
+					<h2 class="legend">Product Information Register</h2>
+				</tr>			
+            <tr>
+				<td style="padding-left: 50px;">
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						<tr> 
+							<h2 style="color: #555555;">Customer Information:</h2>
+						</tr>					
+						 <tr style="background:#DDDACC">
+							<td class="fields">			
+								<tr><td style="padding-left: 20px;" >Invoice # : {{htmlescape var=$data.invoice}}	</td></tr>		
+								<tr><td style="padding-left: 20px;" >Full Name : {{htmlescape var=$data.namecus}}</td></tr>								
+							</td>
+							<td>			
+								<tr><td style="padding-left: 20px;" >Email Address : {{htmlescape var=$data.emailcus}}	</td></tr>		
+								<tr><td style="padding-left: 20px;" >Date of install : {{htmlescape var=$data.datecus}}</td></tr>								
+							</td>
+						 </tr>
+						<tr> 
+							<h2 style="color: #555555;">Installer Information:</h2>
+						</tr>					
+						<tr style="background:#DDDACC">
+							<td class="fields">			
+								<tr><td style="padding-left: 20px;" >Full Name : {{htmlescape var=$data.nameins}}	</td></tr>		
+								<tr><td style="padding-left: 20px;" >Address : {{htmlescape var=$data.addressins}}</td></tr>								
+							</td>
+							<td>			
+								<tr class="fields"><td style="padding-left: 20px;" >City : {{htmlescape var=$data.city}}	</td></tr>		
+								<tr><td style="padding-left: 20px;" >{{htmlescape var=$data.state}}</td></tr>
+							</td>			
+							<td>
+								<tr><td style="padding-left: 20px;" >Zip Code : {{htmlescape var=$data.zip}}</td></tr>
+								<tr><td style="padding-left: 20px;" >Email Address : {{htmlescape var=$data.emailadd}}</td></tr>
+							</td>								
+							<td>
+								<tr><td style="padding-left: 20px;" >Phone # : {{htmlescape var=$data.phone}}</td>	</tr>
+								<tr><td style="padding-left: 20px;" >Recommend the installer? : {{htmlescape var=$data.recommend}}</td>	</tr>
+							</td>										
+						 </tr>
+
+						 <tr>
+							<h2 style="color: #555555;">Product Information:</h2>
+						 </tr>
+						<tr style="background:#DDDACC">{{var html}}</tr>
+					</table>
+				 </td>
+            </tr>
+            <!-- [ middle starts here] -->
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you, <strong>{{var namecheckmail}}</strong></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>

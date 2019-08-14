@@ -1,0 +1,284 @@
+<?php
+	if(Mage::getStoreConfig('productregistration/general/enable')==1){
+	$session = Mage::getSingleton('core/session', array('name'=>'frontend'));
+	$data = $session->getFormData();
+	$check = $session->getCheckData();
+	if($check==1){
+		$data = Array ( 'invoice' => '', 'namecus' => '', 'emailcus' => '', 'nameins' => '', 'addressins' => '', 'city' => '', 'state' => '', 'zip' => '', 'emailadd' => '', 'phone' => '', 'recommend' => '', 'eqipment1' => '', 'modelnumber1' => '', 'serial1' => '', 'eqipment2' => '', 'modelnumber2' => '', 'serial2' => '', 'eqipment3' => '', 'modelnumber3' => '', 'serial3' => '', 'captcharnumber' => '' );
+	}
+?>
+
+<div class="account-create">
+	<div class="page-title">
+		<h1><?php echo $this->__('Product Registration Form') ?></h1>
+	</div>
+<form action="<?php echo $this->getUrl('productregistration/submit') ?>" id="dataForm" name="dataForm"  method="post" enctype="multipart/form-data" >	
+	<div class="fieldset">
+		<h2 class="legend"><?php echo $this->__('Customer Information:') ?></h2>
+		<ul class="form-list">
+			<li class="fields">			
+				<div class="field invoice">
+					<label class="required" for="invoice"><em>*</em><?php echo $this->__('Invoice #') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text required-entry" value="<?php echo $data['invoice'] ?>" name="invoice">	
+					</div>
+				</div>		
+				<div class="field name-fullname">
+					<label class="required" for="fullname"><?php echo $this->__('Full Name') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text" value="<?php echo $data['namecus'] ?>" name="namecus">	
+					</div>
+				</div>
+			</li>
+			<li>			
+				<div class="field emailcus">
+					<label class="required" for="invoice"><em>*</em><?php echo $this->__('Email Address') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['emailcus'] ?>" class="input-text required-entry validate-email" name="emailcus">	
+					</div>
+				</div>		
+				<div class="field datecus">
+					<label class="required" for="fullname"><?php echo $this->__('Date of install') ?></label>
+					<div class="input-box">
+						<input type="text" name="datecus" class="input-text" value="<?php echo date('d/m/Y') ?>">
+												
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="fieldset">
+		<h2 class="legend"><?php echo $this->__('Installer Information:') ?></h2>
+		<ul class="form-list">
+			<li class="fields">			
+				<div class="field fullname">
+					<label class="required" for="Full Name"><em>*</em><?php echo $this->__('Full Name') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['nameins'] ?>" class="input-text required-entry" name="nameins">	
+					</div>
+				</div>		
+				<div class="field address">
+					<label class="required" for="address"><?php echo $this->__('Address') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['addressins'] ?>" class="input-text" name="addressins">
+					</div>
+				</div>
+			</li>
+			<li>			
+				<div class="field city">
+					<label class="required" for="invoice"><?php echo $this->__('City') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text" value="<?php echo $data['city'] ?>" name="city">	
+					</div>
+				</div>		
+				<div class="field state">
+					<label class="required" for="fullname"><?php echo $this->__('State') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text" value="<?php echo $data['state'] ?>" name="state">
+					</div>
+				</div>
+			</li>			
+			<li>			
+				<div class="field zip">
+					<label class="required" for="invoice"><?php echo $this->__('Zip Code') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['zip'] ?>" class="input-text" name="zip">
+					</div>
+				</div>		
+				<div class="field emailadd">
+					<label class="required" for="fullname"><em>*</em><?php echo $this->__('Email Address:') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text required-entry" value="<?php echo $data['emailadd'] ?>" name="emailadd">
+					</div>
+				</div>
+			</li>			
+			<li>			
+				<div class="field phone">
+					<label class="required" for="invoice"><em>*</em><?php echo $this->__('Phone #') ?></label>
+					<div class="input-box">
+						<input type="text" class="input-text required-entry" value="<?php echo $data['phone'] ?>" name="phone">
+					</div>
+				</div>		
+			</li>			
+			<li>
+				<?php 
+					$yData="";
+					$nData="";
+					if($data['recommend']){
+						$yData="checked";
+					}else{
+						$nData="checked";
+					}
+				?>
+				<div class="field recommend" style="width: 168px;">
+					<label class="required" for="invoice"><em>*</em><?php echo $this->__('Recommend the installer?') ?></label>
+				</div>
+				<div class="field recommend" style="width: 50px;">
+					<div class="input-box">
+						<input type="radio" checked="<?php echo $yData ?>" name="recommend" value="true" id="workedWithProYes">
+						<label style="float: none;"> <?php echo $this->__('Yes') ?></label>
+					</div>
+				</div>					
+				<div class="field recommend">
+					<div class="input-box">
+						<input type="radio" checked="<?php echo $nData ?>" name="recommend" value="false" id="workedWithProNo">
+						<label style="float: none;"> <?php echo $this->__('NO') ?></label>
+					</div>
+				</div>				
+			</li>
+		</ul>
+	</div>
+	
+	<div class="fieldset">
+		<h2 class="legend"><?php echo $this->__('Product Information:') ?></h2>
+		<ul class="form-list">
+		<p class="webforms-fields-comment"><?php echo $this->__('Please select the brand below then input the model and serial (one piece at a time)') ?></p>
+			<li class="fields">			
+				<div class="field fullname">
+					<label class="required" for="Full Name"><?php echo $this->__('Equipment 1') ?></label>
+					<div class="input-box">
+						<select name="eqipment1">
+						  <?php if ($this->getBrands()): ?>
+							<?php foreach ($this->getBrands() as $_brand): ?>
+								<?php 
+								if($data['eqipment1']==$_brand["label"]){
+									echo '<option selected>'.$_brand["label"].'</option>';
+								}else{ 
+								?>
+									<option><?php echo $_brand["label"]; ?></option>
+								<?php }?>
+							<?php endforeach; ?>
+							<?php else: ?>
+							<option><?php echo $this->__("Brands Aren't Available") ?></option>
+							<?php endif; ?>
+						</select>	
+					</div>
+				</div>		
+				<div class="field modelnumber1">
+					<label class="required" for="modelnumber1"><?php echo $this->__('Model Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['modelnumber1'] ?>" class="input-text" name="modelnumber1">
+					</div>
+				</div>				
+			</li>
+			<li>			
+				<div class="field" style="height: 40px;">
+				</div>		
+				<div class="field serial1">
+					<label class="required" for="serial1"><?php echo $this->__('Serial Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['serial1'] ?>" class="input-text" name="serial1">
+					</div>
+				</div>
+			</li>			
+
+			<li class="fields">			
+				<div class="field fullname">
+					<label class="required" for="Full Name"><?php echo $this->__('Equipment 2') ?></label>
+					<div class="input-box">
+						<select name="eqipment2">
+						  <?php if ($this->getBrands()): ?>
+							<?php foreach ($this->getBrands() as $_brand): ?>
+								<?php 
+								if($data['eqipment2']==$_brand["label"]){
+									echo '<option selected>'.$_brand["label"].'</option>';
+								}else{ 
+								?>
+									<option><?php echo $_brand["label"]; ?></option>
+								<?php }?>
+							<?php endforeach; ?>
+							<?php else: ?>
+								<option><?php echo $this->__("Brands Aren't Available") ?></option>
+							<?php endif; ?>
+						</select>	
+					</div>
+				</div>		
+				<div class="field modelnumber2">
+					<label class="required" for="modelnumber2"><?php echo $this->__('Model Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['modelnumber2'] ?>" class="input-text" name="modelnumber2">
+					</div>
+				</div>				
+			</li>
+			<li>			
+				<div class="field" style="height: 40px;">
+				</div>		
+				<div class="field serial2">
+					<label class="required" for="serial2"><?php echo $this->__('Serial Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['serial2'] ?>" class="input-text" name="serial2">
+					</div>
+				</div>
+			</li>
+
+			<li class="fields">			
+				<div class="field equipment">
+					<label class="required" for="Equipment"><?php echo $this->__('Equipment 3') ?></label>
+					<div class="input-box">
+						<select name="eqipment3">
+						  <?php if ($this->getBrands()): ?>
+							<?php foreach ($this->getBrands() as $_brand): ?>
+								<?php 
+								if($data['eqipment3']==$_brand["label"]){
+									echo '<option selected>'.$_brand["label"].'</option>';
+								}else{ 
+								?>
+									<option><?php echo $_brand["label"]; ?></option>
+								<?php }?>
+							<?php endforeach; ?>
+							<?php else: ?>
+								<option><?php echo $this->__("Brands Aren't Available") ?></option>
+							<?php endif; ?>
+						</select>
+					</div>
+				</div>		
+				<div class="field modelnumber3">
+					<label class="required" for="modelnumber3"><?php echo $this->__('Model Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['modelnumber3'] ?>" class="input-text" name="modelnumber3">
+					</div>
+				</div>				
+			</li>
+			<li>			
+				<div class="field" style="height: 40px;">
+				</div>		
+				<div class="field serial3">
+					<label class="required" for="serial3"><?php echo $this->__('Serial Number:') ?></label>
+					<div class="input-box">
+						<input type="text" value="<?php echo $data['serial3'] ?>" class="input-text" name="serial3">
+					</div>
+				</div>
+			</li>				
+		</ul>
+	</div>
+	<div class="fieldset">
+		<h2 class="legend"><?php echo $this->__('Captcha') ?></h2>
+		<ul class="form-list">
+			<li class="fields">
+				<div class="field">
+					<label class="required" for="serial3"><em>*</em><?php echo $this->__('Please enter the following code into the box provided:') ?></label>					
+					<img src="<?php echo $this->getSkinUrl('md/productregistration/captcha.php') ?>" alt="captcha" width="150px" height="60px" />
+					
+					<br/><br/>
+					<input type="text" class="input-text required-entry" name="captcharnumber">
+				</div>
+			</li>
+		</ul>
+	</div>	
+
+	<div class="buttons-set">
+		<p class="required"><?php echo $this->__('* Required Fields') ?></p>
+		<input type="submit" class="button_dataForm" name="submit" value="<?php echo $this->__('Send Information') ?>" style="background: none repeat scroll 0px 0px rgb(241, 130, 0); width: 125px; height: 30px; color: rgb(255, 255, 255); font-weight: bold; font-size: 11px;">
+	</div>
+	
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('dataForm', true);
+//]]>
+</script>
+</div>
+<?php
+}
+?>

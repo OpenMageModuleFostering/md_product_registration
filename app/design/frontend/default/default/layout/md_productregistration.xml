@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <productregistration_index_index>
+		<reference name="root" ifconfig="productregistration/general/enable">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="content" ifconfig="productregistration/general/enable">
+			<block type="productregistration/customer" name="customer" template="md/productregistration/form.phtml" />
+        </reference>
+    </productregistration_index_index>
+</layout> 

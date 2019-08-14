@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <productregistration_adminhtml_customer_index>
+        <reference name="content">
+            <block type="productregistration/adminhtml_customer" name="customer" />
+        </reference>
+    </productregistration_adminhtml_customer_index>
+</layout>

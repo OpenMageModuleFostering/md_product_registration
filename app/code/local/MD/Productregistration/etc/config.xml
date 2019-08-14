@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MD_Productregistration>
+            <version>0.1.0</version>
+        </MD_Productregistration>
+    </modules>
+    <frontend>
+        <routers>
+            <productregistration>
+                <use>standard</use>
+                <args>
+                    <module>MD_Productregistration</module>
+                    <frontName>productregistration</frontName>
+                </args>
+            </productregistration>
+        </routers>
+        <layout>
+            <updates>
+                <productregistration>
+                    <file>md_productregistration.xml</file>
+                </productregistration>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<productregistration>
+				<use>admin</use>
+				<args>
+					<module>MD_Productregistration</module>
+					<frontName>productregistration</frontName>
+				</args>
+			</productregistration>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<productregistration module="productregistration">
+				<title>Product Registration</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<customer module="productregistration">
+						<title>Customer Information</title>
+						<sort_order>1</sort_order>
+						<action>productregistration/adminhtml_customer</action>
+					</customer>
+				</children>
+			</productregistration>
+		</menu>
+		
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<productregistration module="productregistration">
+							<title>Product Registration</title>
+							<sort_order>71</sort_order>               
+						</productregistration>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <productregistration translate="title" module="productregistration">
+                                            <title>Product Registration</title>
+                                        </productregistration>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<productregistration>
+					<file>md_productregistration.xml</file>
+				</productregistration>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <productregistration>
+                <class>MD_Productregistration_Model</class>
+                <resourceModel>productregistration_mysql4</resourceModel>
+            </productregistration>
+            <productregistration_mysql4>
+                <class>MD_Productregistration_Model_Mysql4</class>
+                <entities>
+                    <customer>
+                        <table>md_customer</table>
+                    </customer>
+                </entities>
+                <entities>
+                    <installer>
+                        <table>md_installer</table>
+                    </installer>
+                </entities>
+				<entities>
+                    <product>
+                        <table>md_product</table>
+                    </product>
+                </entities>
+            </productregistration_mysql4>
+        </models>
+        <resources>
+            <productregistration_setup>
+                <setup>
+                    <module>MD_Productregistration</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </productregistration_setup>
+            <productregistration_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </productregistration_write>
+            <productregistration_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </productregistration_read>
+        </resources>
+        <blocks>
+            <productregistration>
+                <class>MD_Productregistration_Block</class>
+            </productregistration>
+        </blocks>
+        <helpers>
+            <productregistration>
+                <class>MD_Productregistration_Helper</class>
+            </productregistration>
+        </helpers>
+		<template>
+            <email>             
+				<product_notification_productregistration translate="label" module="productregistration">
+                    <label>Product Registration</label>
+                    <file>md/productregistration/productregistration.html</file>
+                    <type>html</type>
+                </product_notification_productregistration>	
+				<product_notification_productregistration_admin translate="label" module="productregistration">
+                    <label>Admin Product Registration</label>
+                    <file>md/productregistration/productregistration_admin.html</file>
+                    <type>html</type>
+                </product_notification_productregistration_admin>
+				<!-- <product_notification_productregistration_admin_approve translate="label" module="productregistration">
+                    <label>Admin Product Registration Approve</label>
+                    <file>md/productregistration/productregistration_admin_approve.html</file>
+                    <type>html</type>
+                </product_notification_productregistration_admin_approve> -->
+				<product_notification_productregistration_approve translate="label" module="productregistration">
+                    <label>Product Registration Approve</label>
+                    <file>md/productregistration/productregistration_approve.html</file>
+                    <type>html</type>
+                </product_notification_productregistration_approve>	
+				<!-- <product_notification_productregistration_admin_reject translate="label" module="productregistration">
+                    <label>Admin Product Registration Reject</label>
+                    <file>md/productregistration/productregistration_admin_approve.html</file>
+                    <type>html</type>
+                </product_notification_productregistration_admin_reject> -->
+				<product_notification_productregistration_reject translate="label" module="productregistration">
+                    <label>Product Registration Reject</label>
+                    <file>md/productregistration/productregistration_approve.html</file>
+                    <type>html</type>
+                </product_notification_productregistration_reject>				
+            </email> 
+        </template>			
+    </global>
+	<default>
+		<productregistration>
+			<info>
+				<enabled>1</enabled>
+			</info>
+		</productregistration>
+	</default>
+</config>
